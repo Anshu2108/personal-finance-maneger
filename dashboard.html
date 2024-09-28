@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Manager - Dashboard</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .sidebar a:hover {
+            background-color: #ddd;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .welcome {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="#">Payment History</a></li>
+            <li><a href="#">Daily Limit Setting</a></li>
+            <li><a href="#">Secret Key Setup</a></li>
+            <li><a href="#" id="logout">Logout</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="welcome">
+            <h1>Welcome, <span id="username"></span>!</h1>
+        </div>
+        <button id="scanQrcode">Scan for payment</button>
+        <!-- Add content for dashboard here -->
+    </div>
+    <script src="https://unpkg.com/jsqr@1.0.0/dist/jsQR.min.js"></script>
+    <script>
+        // ... (Your existing JavaScript) ...
+
+        const scanQRCodeButton = document.getElementById('scanQRCode');
+        const video = document.createElement('video');
+        let stream;
+
+        // ... (QR code scanning logic from above) ...
+    </script>
+    <script>
+        // Check if user is logged in
+        const storedUserData = localStorage.getItem('userData');
+        if (!storedUserData) {
+            window.location.href = 'login.html'; // Redirect to login if not logged in
+        } else {
+            const userData = JSON.parse(storedUserData);
+            document.getElementById('username').textContent = userData.username;
+        }
+
+        // Logout functionality
+        const logoutButton = document.getElementById('logout');
+        logoutButton.addEventListener('click', () => {
+            localStorage.removeItem('userData');
+            window.location.href = 'login.html'; // Redirect to login after logout
+        });
+    </script>
+</body>
+</html>
